@@ -3,10 +3,11 @@ const loader = document.getElementById('loader');
 
 let xhr = new XMLHttpRequest();
 xhr.open('GET', 'https://students.netoservices.ru/nestjs-backend/slow-get-courses');
+xhr.responseType = 'json';
 xhr.send();
 
 xhr.addEventListener('load', () => {
-    let exchangeRates = JSON.parse(xhr.responseText);
+    let exchangeRates = xhr.response;
     for (let item in exchangeRates.response.Valute) {
         items.innerHTML +=
         `<span class="item__code"><b>` 
